@@ -6,7 +6,7 @@ const generateMarkdown = require("./utils/generateMarkdown");
 // TODO: Create an array of questions for user input
 const questions = ["What is the project title?", "Enter a description of the application: ",
     "Enter the usage information of the project: ", "Enter contribution guidelines: ", "Enter test instructions", "Enter installation instructions: ", 
-    "Enter your email address: ", "What is the license of the project: ", "Enter your github username: " 
+    "Enter your email address: ", "What is the license of the project: ", "Enter your github username: ", "What should the file be called?" 
 ];
 
 const licenses = [
@@ -72,11 +72,16 @@ function init() {
             type: "input",
             message: questions[8],
             name: "username"
+        },
+        {
+            type: "input",
+            message: questions[9],
+            name: "fileName"
         }
     ])
     .then((answers) => {
         const markdown = generateMarkdown(answers);
-        writeToFile("ReadMe.md", markdown);
+        writeToFile("/Examples/" + answers.fileName, markdown);
     })
     .catch((err) => {
         console.log("Program failed with: ")
