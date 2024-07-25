@@ -81,7 +81,7 @@ function init() {
     ])
     .then((answers) => {
         const markdown = generateMarkdown(answers);
-        writeToFile("/Examples/" + answers.fileName, markdown);
+        writeToFile(answers.fileName, markdown);
     })
     .catch((err) => {
         console.log("Program failed with: ")
